@@ -87,6 +87,20 @@ public class Fraction {
     }
 
     public Fraction multiplication(Fraction fraction){
-        return new Fraction(this.numerator * fraction.numerator, this.denominator * fraction.denominator);
+        return new Fraction(this.numerator * fraction.numerator,
+                this.denominator * fraction.denominator);
+    }
+
+    public Fraction division(Fraction fraction){
+        return new Fraction(this.numerator * fraction.denominator,
+                this.denominator * fraction.numerator);
+    }
+
+    public Fraction compare(Fraction fraction){
+        if (this.decimal() > fraction.decimal()){
+            return this;
+        } else {
+            return fraction;
+        }
     }
 }

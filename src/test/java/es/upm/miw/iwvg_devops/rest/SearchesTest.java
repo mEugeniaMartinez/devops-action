@@ -1,6 +1,8 @@
 package es.upm.miw.iwvg_devops.rest;
 
+import demo.Fraction;
 import demo.Searches;
+import demo.UsersDatabase;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -52,6 +54,39 @@ class SearchesTest {
     void testFindFractionSubtractionByUserName() {
     }
 
+    @Test
     void testFindFractionMultiplicationByUserFamilyName() {
+        assertEquals(new Fraction(12, -240),
+                new Searches().findFractionMultiplicationByUserFamilyName("López"));
+    }
+
+    @Test
+    void findFirstFractionDivisionByUserId() {
+        assertEquals(new Fraction(-6, 15),
+                new Searches().findFirstFractionDivisionByUserId("3"));
+    }
+
+    @Test
+    void findUserFamilyNameInitialByAnyProperFraction(){
+        assertEquals(List.of("F.", "B.", "L.", "B."), new Searches().findUserFamilyNameInitialByAnyProperFraction()
+                .collect(Collectors.toList()));
+    }
+
+    @Test
+    void findFirstDecimalFractionByUserName(){
+        assertEquals(2.0,
+                new Searches().findFirstDecimalFractionByUserName("Ana"));
+    }
+
+    @Test
+    void findUserIdByAllProperFraction(){
+        assertEquals(List.of(), new Searches().findUserIdByAllProperFraction()
+                .collect(Collectors.toList()));
+    }
+
+    @Test
+    void findHighestFraction(){
+        assertEquals(new Fraction(1, 0),
+                new Searches().findHighestFraction());
     }
 }

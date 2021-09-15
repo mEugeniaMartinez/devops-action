@@ -47,20 +47,26 @@ public class Searches {
         return new UsersDatabase().findAll()
                 .filter(user -> familyName.equals(user.getFamilyName()))
                 .flatMap(user -> user.getFractions().stream())
-                .reduce(new Fraction(1,1), Fraction::multiplication);
-        //return null;
+                .reduce(Fraction::multiplication)
+                .orElse(new Fraction());
     }
 
     public Fraction findFirstFractionDivisionByUserId(String id) {
-        return null;
+        return new UsersDatabase().findAll()
+                .filter(user -> id.equals(user.getId()))
+                .flatMap(user -> user.getFractions().stream())
+                .limit(2)
+                .reduce(Fraction::division)
+                .orElse(new Fraction());
     }
 
     public Double findFirstDecimalFractionByUserName(String name) {
-        /*return new UsersDatabase().findAll()
+        return new UsersDatabase().findAll()
                 .filter(user -> name.equals(user.getName())
                 ).flatMap(user -> user.getFractions().stream())
-                .findFirst();*/
-        return null;
+                .map(Fraction::decimal)
+                .findFirst()
+                .orElse(Double.NaN);
     }
 
     public Stream<String> findUserIdByAllProperFraction() {
@@ -83,10 +89,10 @@ public class Searches {
     }
 
     public Fraction findHighestFraction() {
-        /*return return new UsersDatabase().findAll()
+        return new UsersDatabase().findAll()
                 .filter(user -> user.getFractions().stream()
-                        .;*/
-        return null;
+                        .max(Fraction::compare)
+                        .orElse(new Fraction()));
     }
 
     public Stream<String> findUserNameByAnyImproperFraction() {
