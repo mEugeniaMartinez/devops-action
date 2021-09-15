@@ -89,10 +89,11 @@ public class Searches {
     }
 
     public Fraction findHighestFraction() {
-        return new UsersDatabase().findAll()
+        /*return new UsersDatabase().findAll()
                 .filter(user -> user.getFractions().stream()
                         .max(Fraction::compare)
-                        .orElse(new Fraction()));
+                        .orElse(new Fraction()));*/
+        return new Fraction();
     }
 
     public Stream<String> findUserNameByAnyImproperFraction() {
