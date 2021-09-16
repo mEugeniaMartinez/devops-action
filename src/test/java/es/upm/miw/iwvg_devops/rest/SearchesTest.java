@@ -92,7 +92,7 @@ class SearchesTest {
 
     @Test
     void findDecimalImproperFractionByUserName(){
-        assertEquals(List.of((double)2/1, (double)3/-6),
+        assertEquals(List.of(1.0, 2.0, (double)3/-6, 1.0),
                 new Searches().findDecimalImproperFractionByUserName("Oscar")
                 .collect(Collectors.toList()));
     }

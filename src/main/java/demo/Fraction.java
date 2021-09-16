@@ -83,7 +83,7 @@ public class Fraction {
     }
 
     public boolean isProper(){
-        return this.getNumerator() <= this.getDenominator();
+        return this.getNumerator() < this.getDenominator();
     }
 
     public Fraction multiplication(Fraction fraction){
