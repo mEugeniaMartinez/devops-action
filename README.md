@@ -2,6 +2,10 @@
 ## Ingeniería Web: Visión General (IWVG) DevOps
 > Este proyecto es una Plantilla de apoyo docente de la asignatura.
 
+### Code status
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mEugeniaMartinez_devops-action&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mEugeniaMartinez_devops-action)
+[![BCH compliance](https://bettercodehub.com/edge/badge/mEugeniaMartinez/devops-action?branch=develop)](https://bettercodehub.com/results/mEugeniaMartinez/devops-action)
+
 ### :gear: Instalación del proyecto
 1. Clonar el repositorio en tu equipo, **mediante consola**:
 ```sh
@@ -12,3 +16,4 @@
    1. **Import Project**, y seleccionar la carpeta del proyecto.
    1. Marcar **Create Project from external model**, elegir **Maven**.
    1. **Next** … **Finish**.
+
