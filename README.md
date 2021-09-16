@@ -5,6 +5,7 @@
 ### Code status
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=mEugeniaMartinez_devops-action&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=mEugeniaMartinez_devops-action)
 [![BCH compliance](https://bettercodehub.com/edge/badge/mEugeniaMartinez/devops-action?branch=develop)](https://bettercodehub.com/results/mEugeniaMartinez/devops-action)
+[![Heroku broken](https://devops-meu.herokuapp.com/system/version-badge)](https://devops-meu.herokuapp.com.com/swagger-ui.html)
 
 ### :gear: Instalación del proyecto
 1. Clonar el repositorio en tu equipo, **mediante consola**:
