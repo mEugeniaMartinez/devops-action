@@ -86,7 +86,7 @@ class SearchesTest {
 
     @Test
     void findHighestFraction(){
-        assertEquals(new Fraction(0, 0),
+        assertEquals(new Fraction(2, 1),
                 new Searches().findHighestFraction());
     }
 }

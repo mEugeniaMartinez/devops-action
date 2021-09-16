@@ -96,13 +96,16 @@ public class Fraction {
                 this.denominator * fraction.numerator);
     }
 
+    public boolean isIndetermination(){
+        return (this.decimal() == Double.POSITIVE_INFINITY
+                || this.decimal() == Double.NEGATIVE_INFINITY
+                || (this.numerator== 0 && this.denominator == 0));
+    }
+
     public int compare(Fraction fraction){
-        if (!Double.isNaN(this.decimal()) && !Double.isNaN(fraction.decimal())){
+        if (!this.isIndetermination() && !fraction.isIndetermination()){
             return Double.compare(this.decimal(), fraction.decimal());
-        } /*else if (){
-            return 1;
-        }*/
-        return 0;
+        } else return 0;
     }
 
     public Fraction subtraction(Fraction fraction) {
