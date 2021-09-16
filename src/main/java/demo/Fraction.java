@@ -96,11 +96,17 @@ public class Fraction {
                 this.denominator * fraction.numerator);
     }
 
-    public Fraction compare(Fraction fraction){
-        if (this.decimal() > fraction.decimal()){
-            return this;
-        } else {
-            return fraction;
-        }
+    public int compare(Fraction fraction){
+        if (!Double.isNaN(this.decimal()) && !Double.isNaN(fraction.decimal())){
+            return Double.compare(this.decimal(), fraction.decimal());
+        } /*else if (){
+            return 1;
+        }*/
+        return 0;
+    }
+
+    public Fraction subtraction(Fraction fraction) {
+        return new Fraction((this.numerator * fraction.getDenominator()) - (this.denominator * fraction.getNumerator()),
+                this.denominator * fraction.getDenominator());
     }
 }

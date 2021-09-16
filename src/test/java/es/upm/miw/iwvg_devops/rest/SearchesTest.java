@@ -83,10 +83,10 @@ class SearchesTest {
         assertEquals(List.of(), new Searches().findUserIdByAllProperFraction()
                 .collect(Collectors.toList()));
     }
-/*
+
     @Test
     void findHighestFraction(){
-        assertEquals(new Fraction(1, 0),
+        assertEquals(new Fraction(0, 0),
                 new Searches().findHighestFraction());
-    }*/
+    }
 }
