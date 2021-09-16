@@ -2,6 +2,7 @@ package demo;
 
 import org.apache.logging.log4j.LogManager;
 
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class Searches {
@@ -15,9 +16,7 @@ public class Searches {
 
     public Stream<Integer> findFractionNumeratorByUserFamilyName(String userFamilyName) {
         return new UsersDatabase().findAll()
-                .peek(x -> LogManager.getLogger(this.getClass()).info("before: " + x))
                 .filter(user -> userFamilyName.equals(user.getFamilyName()))
-                .peek(x -> LogManager.getLogger(this.getClass()).info("after: " + x))
                 .flatMap(user -> user.getFractions().stream())
                 .map(Fraction::getNumerator);
     }
@@ -76,9 +75,6 @@ public class Searches {
                 ).map(User::getId);
     }
 
-    public Stream<Double> findDecimalImproperFractionByUserName(String name) {
-        return Stream.empty();
-    }
 
     public Fraction findFirstProperFractionByUserId(String id) {
         return null;
@@ -93,6 +89,14 @@ public class Searches {
                 .flatMap(user -> user.getFractions().stream())
                         .max(Fraction::compare)
                         .orElse(new Fraction());
+    }
+
+    public Stream<Double> findDecimalImproperFractionByUserName(String name) {
+        return new UsersDatabase().findAll()
+                .filter(user -> name.equals(user.getName())
+                ).flatMap(user -> user.getFractions().stream())
+                .filter(Predicate.not(Fraction::isProper))
+                .map(Fraction::decimal);
     }
 
     public Stream<String> findUserNameByAnyImproperFraction() {

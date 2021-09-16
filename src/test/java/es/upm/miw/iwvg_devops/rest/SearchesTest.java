@@ -89,4 +89,11 @@ class SearchesTest {
         assertEquals(new Fraction(2, 1),
                 new Searches().findHighestFraction());
     }
+
+    @Test
+    void findDecimalImproperFractionByUserName(){
+        assertEquals(List.of((double)2/1, (double)3/-6),
+                new Searches().findDecimalImproperFractionByUserName("Oscar")
+                .collect(Collectors.toList()));
+    }
 }
