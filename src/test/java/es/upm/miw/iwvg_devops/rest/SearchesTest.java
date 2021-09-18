@@ -2,7 +2,6 @@ package es.upm.miw.iwvg_devops.rest;
 
 import demo.Fraction;
 import demo.Searches;
-import demo.UsersDatabase;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -94,6 +93,19 @@ class SearchesTest {
     void findDecimalImproperFractionByUserName(){
         assertEquals(List.of(1.0, 2.0, (double)3/-6, 1.0),
                 new Searches().findDecimalImproperFractionByUserName("Oscar")
-                .collect(Collectors.toList()));
+                        .collect(Collectors.toList()));
+    }
+
+    @Test
+    void findFirstProperFractionByUserId(){
+        assertEquals(new Fraction(1, 5),
+                new Searches().findFirstProperFractionByUserId("3"));
+    }
+
+    @Test
+    void findUserFamilyNameByImproperFraction(){
+        assertEquals(List.of("Fernandez", "Blanco", "López", "Torres", "Blanco", "Torres"),
+                new Searches().findUserFamilyNameByImproperFraction()
+                        .collect(Collectors.toList()));
     }
 }

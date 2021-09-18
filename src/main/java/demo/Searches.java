@@ -1,7 +1,5 @@
 package demo;
 
-import org.apache.logging.log4j.LogManager;
-
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -77,11 +75,20 @@ public class Searches {
 
 
     public Fraction findFirstProperFractionByUserId(String id) {
-        return null;
+        return new UsersDatabase().findAll()
+                .filter(user -> id.equals(user.getId())
+                ).flatMap(user -> user.getFractions().stream()
+                ).filter(Fraction::isProper)
+                .findFirst()
+                .orElse(new Fraction());
+
     }
 
     public Stream<String> findUserFamilyNameByImproperFraction() {
-        return Stream.empty();
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                        .anyMatch(Predicate.not(Fraction::isProper))
+                ).map(User::getFamilyName);
     }
 
     public Fraction findHighestFraction() {
